@@ -19,7 +19,7 @@ import com.restauranteScrum.publics.Response;
 import com.restauranteScrum.services.PlatilloService;
 
 @RestController
-@RequestMapping(value = "/api/vi/platillos")
+@RequestMapping(value = "/api/v1/platillos")
 @CrossOrigin( origins = "http://localhost:4200/" )
 
 public class PlatilloController implements GeneralControllerInterface<Platillo>{
@@ -60,6 +60,18 @@ public class PlatilloController implements GeneralControllerInterface<Platillo>{
 	@RequestMapping(value = "/actualizar/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response<Platillo>> actualizar(Platillo entity, Integer id) throws RestauranteException {
 		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), platilloService.actualizar(entity, id), "Datos eliminados correctamente"));
+	}
+
+	@Override
+	public ResponseEntity<Response<Platillo>> obtenerPorNombre(String nombre) throws RestauranteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "/platillos/restaurante/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<List<Platillo>>> obtenerPlatillosPorIdRestaurante(Integer id) throws RestauranteException {
+		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), platilloService.obtenerPlatillosPorIdRestaurante(id), "Datos obtenidos correctamente"));
 	}
 
 }

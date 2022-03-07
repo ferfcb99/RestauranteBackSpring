@@ -3,7 +3,10 @@ package com.restauranteScrum.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.restauranteScrum.daos.TipoDAO;
 import com.restauranteScrum.entities.Tipo;
@@ -27,6 +30,7 @@ public class TipoService implements GeneralCrudInterface<Tipo> {
 		return tipoDAO.findById(id)
 				.orElseThrow(() -> new NotFoundException("Error", "Elemento no encontrado - ID: " + id));
 	}
+
 
 	@Override
 	public Tipo eliminarPorId(Integer id) throws RestauranteException{
@@ -59,5 +63,22 @@ public class TipoService implements GeneralCrudInterface<Tipo> {
 	public Tipo crear(Tipo entity) throws RestauranteException {
 		return this.tipoDAO.save(entity);
 	}
+	
+	@Override
+	public Tipo obtenerPorNombre(@PathVariable String nombre) throws RestauranteException{
+		return this.tipoDAO.findByNombre(nombre);
+	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+

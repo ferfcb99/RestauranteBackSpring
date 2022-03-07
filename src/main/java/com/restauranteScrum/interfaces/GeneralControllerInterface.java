@@ -25,4 +25,6 @@ public interface GeneralControllerInterface<T> {
 	
 	public ResponseEntity<Response<T>> actualizar(@RequestBody T entity, @PathVariable Integer id) throws RestauranteException;
 	
+	public ResponseEntity<Response<T>> obtenerPorNombre(@PathVariable String nombre) throws RestauranteException;
+	
 }

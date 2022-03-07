@@ -20,20 +20,23 @@ import com.restauranteScrum.services.TipoService;
 
 @RestController
 @RequestMapping(value = "/api/v1/tipos")
+// http://localhost:8084/api/v1/tipos
 @CrossOrigin( origins = "http://localhost:4200/" )
 public class TipoController implements GeneralControllerInterface<Tipo>{
 	
 	@Autowired
 	TipoService tipoService;
 
-	@Override
-	// localhost:8084/api/v1/tipos/tipos
+	
+	
+	// http://localhost:8084/api/v1/tipos/tipos
+	@Override	
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "/tipos", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	public ResponseEntity<Response<List<Tipo>>> obtenerTodos() throws RestauranteException {
 		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), tipoService.obtenerTodos(), "Datos obtenidos correctamente"));
 	}
-
+	// http://localhost:8084/api/v1/tipos/tipos/${id}
 	@Override
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "/tipos/{id}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
@@ -48,6 +51,7 @@ public class TipoController implements GeneralControllerInterface<Tipo>{
 		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), tipoService.crear(entity), "Creado correctamente"));
 	}
 
+	//http://localhost:8084/api/v1/tipos/eliminar/{id}
 	@Override
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "/eliminar/{id}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.DELETE)
@@ -60,6 +64,14 @@ public class TipoController implements GeneralControllerInterface<Tipo>{
 	@RequestMapping(value = "/actualizar/{id}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.PUT)
 	public ResponseEntity<Response<Tipo>> actualizar(Tipo entity, Integer id) throws RestauranteException {
 		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), tipoService.actualizar(entity, id), "Actualizado correctamente"));
+	}
+	
+	
+	@Override
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "/tipo/nombre/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	public ResponseEntity<Response<Tipo>> obtenerPorNombre(String nombre) throws RestauranteException {
+		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), tipoService.obtenerPorNombre(nombre), "datos obtenidos correctamente"));
 	}
 
 }

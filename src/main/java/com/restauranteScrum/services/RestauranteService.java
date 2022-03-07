@@ -64,4 +64,10 @@ public class RestauranteService implements GeneralCrudInterface<Restaurante>{
 		return this.restauranteDAO.save(entity);
 	}
 
+	@Override
+	public Restaurante obtenerPorNombre(String nombre) throws RestauranteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

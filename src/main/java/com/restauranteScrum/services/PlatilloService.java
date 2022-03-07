@@ -57,4 +57,14 @@ public class PlatilloService implements GeneralCrudInterface<Platillo>{
 		return this.platilloDAO.save(entity);
 	}
 
+	@Override
+	public Platillo obtenerPorNombre(String nombre) throws RestauranteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public List<Platillo> obtenerPlatillosPorIdRestaurante(Integer idRestaurante) throws RestauranteException{
+		return this.platilloDAO.findByIdRestaurantId(idRestaurante);
+	}
+
 }

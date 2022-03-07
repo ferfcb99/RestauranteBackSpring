@@ -66,4 +66,10 @@ public class RestauranteController implements GeneralControllerInterface<Restaur
 		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), restauranteService.actualizar(entity, id), "Actualizado correctamente"));
 	}
 
+	@Override
+	public ResponseEntity<Response<Restaurante>> obtenerPorNombre(String nombre) throws RestauranteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

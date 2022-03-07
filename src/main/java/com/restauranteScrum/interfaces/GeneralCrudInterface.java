@@ -20,4 +20,6 @@ public interface GeneralCrudInterface<T> {
 	
 	public T crear(@RequestBody T entity) throws RestauranteException;
 	
+	public T obtenerPorNombre(@PathVariable String nombre) throws RestauranteException;
+	
 }
