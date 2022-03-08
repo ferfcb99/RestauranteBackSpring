@@ -66,5 +66,16 @@ public class PlatilloService implements GeneralCrudInterface<Platillo>{
 	public List<Platillo> obtenerPlatillosPorIdRestaurante(Integer idRestaurante) throws RestauranteException{
 		return this.platilloDAO.findByIdRestaurantId(idRestaurante);
 	}
+	
+	public List<Platillo> obtenerPlatillosPorIdTipo(Integer idTipo) throws RestauranteException{
+		return this.platilloDAO.findByTipoId(idTipo);
+	}
 
 }
+
+
+
+
+
+
+

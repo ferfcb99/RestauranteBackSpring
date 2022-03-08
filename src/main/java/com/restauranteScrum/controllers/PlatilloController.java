@@ -73,5 +73,12 @@ public class PlatilloController implements GeneralControllerInterface<Platillo>{
 	public ResponseEntity<Response<List<Platillo>>> obtenerPlatillosPorIdRestaurante(Integer id) throws RestauranteException {
 		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), platilloService.obtenerPlatillosPorIdRestaurante(id), "Datos obtenidos correctamente"));
 	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "/platillos/tipo/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<List<Platillo>>> obtenerPorTipoId(Integer id) throws RestauranteException {
+		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), platilloService.obtenerPlatillosPorIdTipo(id), "Datos obtenidos correctamente"));
+	}
+
 
 }

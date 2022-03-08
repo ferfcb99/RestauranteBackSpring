@@ -16,4 +16,8 @@ public interface PlatilloDAO extends JpaRepository<Platillo, Integer>{
 	// iso 2006/116
 	@Query("SELECT p FROM Platillo p INNER JOIN p.restaurante r WHERE r.id = :id")
 	public List<Platillo> findByIdRestaurantId(@Param("id") Integer id);
+	
+	
+	@Query("SELECT p FROM Platillo p INNER JOIN p.tipo t WHERE t.id = :id")
+	public List<Platillo> findByTipoId(@Param("id") Integer id);
 }
