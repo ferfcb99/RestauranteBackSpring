@@ -36,6 +36,8 @@ public class TipoController implements GeneralControllerInterface<Tipo>{
 	public ResponseEntity<Response<List<Tipo>>> obtenerTodos() throws RestauranteException {
 		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), tipoService.obtenerTodos(), "Datos obtenidos correctamente"));
 	}
+	
+
 	// http://localhost:8084/api/v1/tipos/tipos/${id}
 	@Override
 	@ResponseStatus(HttpStatus.OK)
@@ -73,5 +75,13 @@ public class TipoController implements GeneralControllerInterface<Tipo>{
 	public ResponseEntity<Response<Tipo>> obtenerPorNombre(String nombre) throws RestauranteException {
 		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), tipoService.obtenerPorNombre(nombre), "datos obtenidos correctamente"));
 	}
+	
+	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "/tipos/sql", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	public ResponseEntity<Response<List<Tipo>>> obtenerSQL() throws RestauranteException {
+		return ResponseEntity.ok(new Response<>(String.valueOf(HttpStatus.OK), tipoService.tipoConQueryNativo(), "Datos obtenidos correctamente"));
+	}
+	
 
 }

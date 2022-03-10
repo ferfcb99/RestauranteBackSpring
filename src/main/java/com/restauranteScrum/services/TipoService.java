@@ -69,6 +69,10 @@ public class TipoService implements GeneralCrudInterface<Tipo> {
 		return this.tipoDAO.findByNombre(nombre);
 	}
 	
+	
+	public List<Tipo> tipoConQueryNativo() throws RestauranteException{
+		return this.tipoDAO.findByQueryNAtive();
+	}
 
 }
 
